@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: product-service
+  name: product-service
+spec:
+  endpoints:  
+  - interval: 30s
+    port: 8080-tcp
+    scheme: http
+    path: /actuator/prometheus
+  selector:
+    matchLabels:
+      app: product-service
